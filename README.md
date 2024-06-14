@@ -1,11 +1,13 @@
 # Présentation du Projet SoigneMoi version MOBILE
 
 Dans le cadre de mon projet, j'ai développé une application mobile Flutter pour un hôpital fictif SoigneMoi, qui permet aux Médecins de se connecter, de rédiger des avis sur les patients et de consulter ces avis. 
+
 L'application consomme une API sécurisée (API Platform via le projet web en Symfony) avec un système d'authentification JWT (JSON Web Token).
 
 ### Structure du Projet
 
 J'ai structuré le projet de manière à séparer les différentes responsabilités en utilisant le model MVC, ce qui facilite la maintenance et l'évolutivité de l'application. 
+
 Voici l'arborescence des dossiers :
 
 ##### 1. controllers/ : 
@@ -38,6 +40,7 @@ dependencies:
 #### 1. Création du Service API
 
 Dans le fichier `lib/services/api_service.dart`, j'ai créé le service pour gérer les requêtes HTTP vers l'API, en utilisant des tokens JWT pour l'authentification. 
+
 J'ai également désactivé la vérification SSL pour contourner les problèmes de certificats auto-signés pendant le développement.
 
 ```DART
@@ -224,6 +227,7 @@ class AuthController with ChangeNotifier {
 ```
 
 ### 4. Création des Pages de l'Application
+
 ##### Page de Connexion
 
 La page de connexion HomePage permet à l'utilisateur de se connecter en saisissant son email et son mot de passe. J'ai ajouté des print statements pour faciliter le débogage.
