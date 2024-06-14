@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset('assets/images/logo.jpg', height: 150),
             TextField(
               controller: emailController,
               decoration: const InputDecoration(

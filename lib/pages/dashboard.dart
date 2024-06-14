@@ -9,7 +9,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tableau de bord', style: TextStyle(color: Colors.white)),
+        title: const Text('Tableau de bord - SoigneMoi', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF3498DB),
         actions: [
           IconButton(
@@ -25,7 +25,11 @@ class Dashboard extends StatelessWidget {
         color: const Color(0xFFF1F1F1),
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            
+            Image.asset('assets/images/logo.jpg', height: 150),
+            const SizedBox(height: 16.0),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
