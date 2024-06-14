@@ -8,7 +8,7 @@ class AuthController with ChangeNotifier {
 
   Future<void> login(String email, String password) async {
     _isLoggedIn = await ApiService.login(email, password);
-    print('isLoggedIn: $_isLoggedIn'); // Debugging statement
+    print('isLoggedIn: $_isLoggedIn');
     notifyListeners();
   }
 

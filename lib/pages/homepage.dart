@@ -31,16 +31,16 @@ class HomePage extends StatelessWidget {
                 final email = emailController.text;
                 final password = passwordController.text;
 
-                print('Email: $email'); // Debugging statement
-                print('Password: $password'); // Debugging statement
+                print('Email: $email'); 
+                print('Password: $password'); 
 
                 await context.read<AuthController>().login(email, password);
 
                 if (context.read<AuthController>().isLoggedIn) {
-                  print('Login successful'); // Debugging statement
+                  print('Login successful');
                   Navigator.pushReplacementNamed(context, '/dashboard');
                 } else {
-                  print('Login failed'); // Debugging statement
+                  print('Login failed'); 
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Échec de la connexion')),
                   );
