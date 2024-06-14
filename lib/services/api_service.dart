@@ -6,7 +6,7 @@ import 'package:studi_ecf_soignemoi_appli_mobile/models/avis.dart';
 
 
 class ApiService {
-  static const String baseUrl = 'https://127.0.0.1:8000';
+  static const String baseUrl = 'https://soignemoi.neoliaweb.fr';
   static String token = '';
 
 static Future<bool> login(String email, String password) async {

@@ -20,31 +20,43 @@ class _ConsulterAvisState extends State<ConsulterAvis> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Consulter les avis'),
+        title: const Text('Consulter les avis', style: TextStyle(color: Colors.white)),
+        backgroundColor: Color(0xFF3498DB),
       ),
-      body: FutureBuilder<List<Avis>>(
-        future: avisList,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Erreur: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('Aucun avis disponible'));
-          } else {
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                final avis = snapshot.data![index];
-                return ListTile(
-                  title: Text(avis.libelle),
-                  subtitle: Text(avis.description),
-                  trailing: Text(avis.date),
-                );
-              },
-            );
-          }
-        },
+      body: Container(
+        color: const Color(0xFFF1F1F1),
+        child: FutureBuilder<List<Avis>>(
+          future: avisList,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator(color: Color(0xFF3498DB)));
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Erreur: ${snapshot.error}', style: const TextStyle(color: Color(0xFF3498DB))));
+            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return const Center(child: Text('Aucun avis disponible', style: TextStyle(color: Color(0xFF3498DB))));
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  final avis = snapshot.data![index];
+                  return Card(
+                    margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    child: ListTile(
+                      title: Text(avis.libelle, style: const TextStyle(color: Color(0xFF333333), fontWeight: FontWeight.bold)),
+                      subtitle: Column(
+                        children: [
+                          Text(avis.description, style: const TextStyle(color: Color(0xFF666666))),
+                          Text(avis.medecin, style: const TextStyle(color: Color(0xFF666666))),
+                        ],
+                      ),
+                      trailing: Text(avis.date, style: const TextStyle(color: Color(0xFF999999))),
+                    ),
+                  );
+                },
+              );
+            }
+          },
+        ),
       ),
     );
   }

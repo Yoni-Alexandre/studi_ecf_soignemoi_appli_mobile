@@ -9,10 +9,11 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tableau de bord'),
+        title: const Text('Tableau de bord', style: TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF3498DB),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout, color: Colors.white),
             onPressed: () {
               context.read<AuthController>().logout();
               Navigator.pushReplacementNamed(context, '/');
@@ -20,27 +21,45 @@ class Dashboard extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Container(
+        color: const Color(0xFFF1F1F1),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RedigerAvis()),
-                );
-              },
-              child: Text('Rédiger un avis'),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white, backgroundColor: const Color(0xFF3498DB),
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RedigerAvis()),
+                  );
+                },
+                child: const Text('Rédiger un avis'),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ConsulterAvis()),
-                );
-              },
-              child: Text('Consulter les avis'),
+            const SizedBox(height: 16.0),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white, backgroundColor: const Color(0xFF3498DB),
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  textStyle: const TextStyle(fontSize: 18),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ConsulterAvis()),
+                  );
+                },
+                child: const Text('Consulter les avis'),
+              ),
             ),
           ],
         ),
